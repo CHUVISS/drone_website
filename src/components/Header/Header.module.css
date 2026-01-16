@@ -1,0 +1,200 @@
+.header {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.logoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: #fff;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.logoAccent {
+  font-weight: 700;
+  background: linear-gradient(45deg, #00d4ff, #0088ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logoLine {
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(45deg, #00d4ff, #0088ff);
+  margin-top: 4px;
+  border-radius: 1px;
+  animation: slideIn 0.8s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+}
+
+.navButton {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  cursor: pointer;
+  padding: 8px 0;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navText {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.navLine {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(45deg, #00d4ff, #0088ff);
+  transition: width 0.3s ease;
+  border-radius: 1px;
+}
+
+.navButton:hover .navText {
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.navButton:hover .navLine {
+  width: 100%;
+}
+
+.menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.menuIcon {
+  width: 24px;
+  height: 18px;
+  position: relative;
+}
+
+.menuIcon span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  border-radius: 1px;
+  transition: all 0.3s ease;
+}
+
+.menuIcon span:nth-child(1) {
+  top: 0;
+}
+
+.menuIcon span:nth-child(2) {
+  top: 8px;
+}
+
+.menuIcon span:nth-child(3) {
+  top: 16px;
+}
+
+.menuIconOpen span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 8px;
+}
+
+.menuIconOpen span:nth-child(2) {
+  opacity: 0;
+}
+
+.menuIconOpen span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 8px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    height: 60px;
+    padding: 0 16px;
+  }
+  
+  .menuToggle {
+    display: block;
+  }
+  
+  .nav {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 24px;
+    gap: 16px;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .navOpen {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .navButton {
+    font-size: 16px;
+    padding: 12px 0;
+  }
+}
